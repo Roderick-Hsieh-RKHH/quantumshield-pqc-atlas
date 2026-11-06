@@ -1,0 +1,13 @@
+{
+  "slug": "example-topic",
+  "title": "文章標題",
+  "category": "基礎概念",
+  "level": "入門",
+  "summary": "這裡寫清楚的文章摘要，介紹讀者可以學到哪些重點。",
+  "readingMinutes": 3,
+  "sections": [
+    {"heading": "第一節標題", "paragraphs": ["第一段說明文字。"]},
+    {"heading": "第二節標題", "paragraphs": ["第二段說明文字。"]}
+  ],
+  "sources": [{"label": "NIST 官方來源", "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"}]
+}

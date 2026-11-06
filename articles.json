@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "what-is-pqc",
+    "title": "什麼是後量子密碼學？",
+    "category": "基礎概念",
+    "level": "入門",
+    "summary": "理解為什麼需要 PQC，以及它與量子電腦的關係。",
+    "readingMinutes": 4,
+    "sections": [
+      {"heading": "核心概念", "paragraphs": ["後量子密碼學（Post-Quantum Cryptography，PQC）是研究能抵抗已知量子演算法攻擊的密碼技術。它通常在傳統電腦、伺服器與現有網路上執行，不需要量子電腦。", "部分目前廣泛使用的公開金鑰密碼系統，例如 RSA 與橢圓曲線密碼學，面對足夠強大的容錯量子電腦可能遭遇風險。"]},
+      {"heading": "為什麼現在要準備？", "paragraphs": ["密碼系統更新涉及資產盤點、相容性測試、協定更新與金鑰管理。即使大型量子電腦何時可用仍有不確定性，提前規劃能降低未來集中遷移的風險。"]},
+      {"heading": "接下來學什麼？", "paragraphs": ["可以先區分兩類用途：金鑰建立（例如 ML-KEM）與數位簽章（例如 ML-DSA、SLH-DSA）。再理解如何評估既有系統的演算法依賴。"]}
+    ],
+    "sources": [{"label": "NIST Post-Quantum Cryptography", "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"}]
+  },
+  {
+    "slug": "ml-kem",
+    "title": "ML-KEM：後量子金鑰封裝",
+    "category": "核心演算法",
+    "level": "中階",
+    "summary": "認識 FIPS 203 與 ML-KEM-512、768、1024 的定位。",
+    "readingMinutes": 5,
+    "sections": [
+      {"heading": "什麼是 ML-KEM？", "paragraphs": ["ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是 NIST FIPS 203 規範的金鑰封裝機制。通訊雙方可藉由封裝與解封裝建立共用秘密，用於後續的對稱加密。", "ML-KEM 並不是用來直接加密任意長度文件的通用加密演算法。"]},
+      {"heading": "參數組", "paragraphs": ["FIPS 203 定義 ML-KEM-512、ML-KEM-768 與 ML-KEM-1024 三組參數。選擇時須考量安全需求、效能與應用環境，不應只看數字大小。"]},
+      {"heading": "實務使用", "paragraphs": ["實際協定仍需正確處理身分認證、協商完整性、隨機數及金鑰衍生。單獨加入 ML-KEM 不等於整個通訊系統已完整安全。"]}
+    ],
+    "sources": [{"label": "NIST FIPS 203", "url": "https://csrc.nist.gov/pubs/fips/203/final"}]
+  },
+  {
+    "slug": "digital-signatures",
+    "title": "ML-DSA 與 SLH-DSA：數位簽章",
+    "category": "核心演算法",
+    "level": "中階",
+    "summary": "比較兩套 NIST 後量子數位簽章標準。",
+    "readingMinutes": 5,
+    "sections": [
+      {"heading": "數位簽章的角色", "paragraphs": ["數位簽章可協助驗證訊息來源及內容完整性，功能不同於用來建立共享秘密的 KEM。"]},
+      {"heading": "ML-DSA", "paragraphs": ["ML-DSA 是 NIST FIPS 204 規範的模組格基數位簽章演算法。"]},
+      {"heading": "SLH-DSA", "paragraphs": ["SLH-DSA 是 NIST FIPS 205 規範的無狀態雜湊式數位簽章演算法。", "兩者在設計基礎與實務效能上不同，部署前仍需評估簽章大小、金鑰大小、驗證效率與系統限制。"]}
+    ],
+    "sources": [{"label": "NIST FIPS 204", "url": "https://csrc.nist.gov/pubs/fips/204/final"}, {"label": "NIST FIPS 205", "url": "https://csrc.nist.gov/pubs/fips/205/final"}]
+  },
+  {
+    "slug": "migration-roadmap",
+    "title": "企業如何開始 PQC 遷移？",
+    "category": "遷移實務",
+    "level": "實務",
+    "summary": "從資產盤點、風險排序到試點導入的入門路線。",
+    "readingMinutes": 6,
+    "sections": [
+      {"heading": "第一步：盤點密碼資產", "paragraphs": ["辨識系統內的 RSA、ECC、憑證、TLS 設定及依賴套件，建立誰在使用哪些演算法的清單。"]},
+      {"heading": "第二步：排定優先順序", "paragraphs": ["根據資料保密期限、外部依賴、供應商支援程度與系統關鍵性，決定測試與替換的先後。"]},
+      {"heading": "第三步：測試並逐步部署", "paragraphs": ["建立小型試點，驗證相容性、效能與失敗回復機制；記錄測試結果，避免未經驗證便全面切換。", "使用密碼敏捷（crypto agility）的設計能讓未來替換演算法時減少應用程式修改，但仍需完整安全審查。"]}
+    ],
+    "sources": [{"label": "NIST PQC 遷移資訊", "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"}]
+  }
+]
